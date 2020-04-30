@@ -54,10 +54,13 @@ const sketch = ({ context }) => {
   const earthMesh = new THREE.Mesh(geometry, earthMaterial);
   scene.add(earthMesh);
 
+
+  const moonGroup = new THREE.Group()
   const moonMesh = new THREE.Mesh(geometry, moonMaterial);
   moonMesh.position.set(3, 0, 0)
   moonMesh.scale.setScalar(0.25)
-  scene.add(moonMesh)
+  moonGroup.add(moonMesh)
+  scene.add(moonGroup)
 
   // draw each frame
   return {
@@ -70,6 +73,7 @@ const sketch = ({ context }) => {
     },
     // Update & render your scene here
     render({ time }) {
+      moonGroup.rotation.y = time * 0.1
       moonMesh.rotation.y = time * 0.25
       earthMesh.rotation.y = time * 0.1
       controls.update();
