@@ -45,8 +45,8 @@ const sketch = ({ context }) => {
   });
 
   // Setup a mesh with geometry + material
-  const mesh = new THREE.Mesh(geometry, earthMaterial);
-  scene.add(mesh);
+  const earthMesh = new THREE.Mesh(geometry, earthMaterial);
+  scene.add(earthMesh);
 
   // draw each frame
   return {
