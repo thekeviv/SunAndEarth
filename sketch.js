@@ -24,7 +24,7 @@ const sketch = ({ context }) => {
 
   // Setup a camera
   const camera = new THREE.PerspectiveCamera(50, 0.5, 0.01, 100);
-  camera.position.set(2, 4, -4);
+  camera.position.set(0, 4, -4);
   camera.lookAt(new THREE.Vector3());
 
   // Setup camera controller
@@ -70,6 +70,8 @@ const sketch = ({ context }) => {
     },
     // Update & render your scene here
     render({ time }) {
+      moonMesh.rotation.y = time * 0.25
+      earthMesh.rotation.y = time * 0.1
       controls.update();
       renderer.render(scene, camera);
     },
