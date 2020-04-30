@@ -36,14 +36,16 @@ const sketch = ({ context }) => {
   // Setup a geometry
   const geometry = new THREE.SphereGeometry(1, 32, 16);
 
+  const textureLoader = new THREE.TextureLoader()
+  const earthTexture = textureLoader.load('earth.jpg')
+
   // Setup a material
-  const material = new THREE.MeshBasicMaterial({
-    color: "red",
-    wireframe: true,
+  const earthMaterial = new THREE.MeshBasicMaterial({
+    map: earthTexture
   });
 
   // Setup a mesh with geometry + material
-  const mesh = new THREE.Mesh(geometry, material);
+  const mesh = new THREE.Mesh(geometry, earthMaterial);
   scene.add(mesh);
 
   // draw each frame
